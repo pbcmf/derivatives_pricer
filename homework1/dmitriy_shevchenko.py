@@ -6,7 +6,7 @@ class LinearInterpolator:
         """
         Accepts the list of lists with [x, y] values of function and performs a linear interpolation for given
         argument z.
-        Note: value of argument is supposed to lie in the following interval min(x) < z < max(z).
+        Note: value of argument is supposed to lie in the following interval min(x) < z < max(x).
 
         vals - list of [x, y] pairs;
         z - argument for which interpolated function is to be calculated.
@@ -51,4 +51,4 @@ def test_interpolation(vals, z):
 if __name__ == "__main__":
 
     test_array = [[10, 1000], [-2345, 1000], [1, 1.5], [-100, -200], [4, 6]]        # example y = 1.5x
-    test_interpolation(test_array, 2)       # 1 < 2 < 4, resulting k=3
+    test_interpolation(test_array, 2)       # 1 < z=2 < 4, resulting k=3
