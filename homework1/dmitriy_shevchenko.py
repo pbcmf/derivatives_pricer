@@ -3,6 +3,15 @@ class LinearInterpolator:
     @ staticmethod
     def interpolate(vals, z):
 
+        """
+        Accepts the list of lists with [x, y] values of function and performs a linear interpolation for given
+        argument z.
+        Note: value of argument is supposed to lie in the following interval min(x) < z < max(z).
+
+        vals - list of [x, y] pairs;
+        z - argument for which interpolated function is to be calculated.
+        """
+
         k = None
         up_bnd = None
         low_bnd = None
@@ -29,6 +38,11 @@ class LinearInterpolator:
 
 def test_interpolation(vals, z):
 
+    """
+    Creates an object of class LinearInterpolator and perform interpolation for given list of
+    argument-value pairs and given argument to calculate function value.
+    """
+
     interpolator = LinearInterpolator()
     k = interpolator.interpolate(vals, z)
     print(f'For given array {vals} and argument {z} linear interpolation returns value {k:.2f}')
@@ -36,5 +50,5 @@ def test_interpolation(vals, z):
 
 if __name__ == "__main__":
 
-    test_array = [[10, 1000], [-2345, 1000], [1, 1.5], [-100, -200], [4, 6]]        # y = 1.5x
-    test_interpolation(test_array, 2)
+    test_array = [[10, 1000], [-2345, 1000], [1, 1.5], [-100, -200], [4, 6]]        # example y = 1.5x
+    test_interpolation(test_array, 2)       # 1 < 2 < 4, resulting k=3
