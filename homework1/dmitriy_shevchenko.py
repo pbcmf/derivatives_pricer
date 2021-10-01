@@ -52,4 +52,3 @@ if __name__ == "__main__":
 
     test_array = [[10, 1000], [-2345, 1000], [1, 1.5], [-100, -200], [4, 6]]        # example y = 1.5x
     test_interpolation(test_array, 2)       # 1 < 2 < 4, resulting k=3
-
