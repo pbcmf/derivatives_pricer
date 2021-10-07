@@ -6,8 +6,6 @@ class LinearInterpolator:
         """
         Accepts the list of lists with [x, y] values of function and performs a linear interpolation for given
         argument z.
-        Note: value of argument is supposed to lie in the following interval min(x) < z < max(x)
-        (throws ValueError otherwise).
 
         vals - list of [x, y] pairs;
         z - argument for which interpolated function is to be calculated.
@@ -44,6 +42,8 @@ def test_interpolation(vals, z):
     """
     Creates an object of class LinearInterpolator and perform interpolation for given list of
     argument-value pairs and given argument to calculate function value.
+    Note: value of argument is supposed to lie in the following interval min(x) < z < max(x)
+    (throws ValueError otherwise).
     """
     try:
         interpolator = LinearInterpolator()
@@ -51,7 +51,7 @@ def test_interpolation(vals, z):
         print(f'For given array {vals} and argument {z} linear interpolation returns value {k:.2f}')
 
     except IndexError:
-        raise ValueError('Argument z must lie in the following interval min(x) < z < max(x)')
+        raise ValueError('Argument z must lie in the following interval: min(x) < z < max(x)')
 
 
 if __name__ == "__main__":
