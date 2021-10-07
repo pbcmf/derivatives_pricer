@@ -6,7 +6,8 @@ class LinearInterpolator:
         """
         Accepts the list of lists with [x, y] values of function and performs a linear interpolation for given
         argument z.
-        Note: value of argument is supposed to lie in the following interval min(x) < z < max(x).
+        Note: value of argument is supposed to lie in the following interval min(x) < z < max(x)
+        (throws ValueError otherwise).
 
         vals - list of [x, y] pairs;
         z - argument for which interpolated function is to be calculated.
@@ -17,11 +18,13 @@ class LinearInterpolator:
         low_bnd = None
 
         sorted_list = sorted(vals, key=lambda subl: subl[0])
+
         for i in range(len(sorted_list)):
 
             if z == sorted_list[i][0]:
                 k = sorted_list[i][1]
-            if (sorted_list[i][0] < z < sorted_list[i+1][0]) and (i != len(sorted_list) - 1):
+            if ((sorted_list[i][0] < z < sorted_list[i+1][0])
+                    and (i != len(sorted_list) - 1)):
                 up_bnd, low_bnd = i+1, i
 
         if up_bnd is not None and low_bnd is not None:
@@ -42,10 +45,13 @@ def test_interpolation(vals, z):
     Creates an object of class LinearInterpolator and perform interpolation for given list of
     argument-value pairs and given argument to calculate function value.
     """
+    try:
+        interpolator = LinearInterpolator()
+        k = interpolator.interpolate(vals, z)
+        print(f'For given array {vals} and argument {z} linear interpolation returns value {k:.2f}')
 
-    interpolator = LinearInterpolator()
-    k = interpolator.interpolate(vals, z)
-    print(f'For given array {vals} and argument {z} linear interpolation returns value {k:.2f}')
+    except IndexError:
+        raise ValueError('Argument z must lie in the following interval min(x) < z < max(x)')
 
 
 if __name__ == "__main__":
